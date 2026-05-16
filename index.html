@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raghav Gaur — AI Product Manager</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0c0e10;
+  --bg2:#111418;
+  --bg3:#161b22;
+  --amber:#E8A030;
+  --amber-dim:#b07820;
+  --amber-glow:rgba(232,160,48,0.10);
+  --blue:#4A8FE8;
+  --blue-glow:rgba(74,143,232,0.10);
+  --text:#F2F4F8;
+  --text2:#8B96A8;
+  --text3:#4A5568;
+  --border:rgba(255,255,255,0.07);
+  --border2:rgba(255,255,255,0.12);
+  --card:#13171e;
+  --card2:#181d26;
+  --radius:14px;
+  --radius-sm:8px;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.7;overflow-x:hidden}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(12,14,16,0.88);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 5vw}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:58px}
+.nav-logo{font-family:'Syne',sans-serif;font-size:17px;font-weight:800;color:var(--text);letter-spacing:-0.01em}
+.nav-logo span{color:var(--amber)}
+.nav-links{display:flex;align-items:center;gap:6px}
+.nav-links a{font-size:13px;color:var(--text2);text-decoration:none;padding:6px 14px;border-radius:6px;transition:color .2s,background .2s}
+.nav-links a:hover{color:var(--text);background:rgba(255,255,255,0.05)}
+.nav-cta{padding:7px 18px!important;background:var(--amber)!important;color:#0c0e10!important;font-weight:600!important;border-radius:7px!important}
+.nav-cta:hover{background:#d4921a!important;color:#0c0e10!important}
+.nav-links a.nav-active{color:var(--text);background:rgba(232,160,48,0.08);}
+.nav-links a.nav-active:not(.nav-cta){color:var(--amber);}
+
+/* LAYOUT */
+.page{max-width:1100px;margin:0 auto;padding:0 5vw}
+
+/* HERO */
+.hero{padding:80px 0 72px;border-bottom:1px solid var(--border)}
+.hero-grid{display:grid;grid-template-columns:1fr 300px;gap:56px;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;font-size:11.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);background:var(--amber-glow);border:1px solid rgba(232,160,48,.18);padding:5px 14px;border-radius:40px;margin-bottom:28px}
+.hero-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--amber);animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+.hero-name{font-family:'Syne',sans-serif;font-size:72px;font-weight:800;line-height:.95;letter-spacing:-.03em;margin-bottom:14px}
+.hero-name .line1{display:block;color:var(--text)}
+.hero-name .line2{display:block;color:var(--amber)}
+.hero-role{font-family:'DM Sans',sans-serif;font-size:16px;color:var(--text2);margin-bottom:22px;font-weight:400}
+.hero-role strong{color:var(--text);font-weight:500}
+.hero-summary{font-size:15px;color:var(--text2);max-width:500px;line-height:1.8;margin-bottom:32px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 22px;border-radius:var(--radius-sm);font-size:14px;font-weight:500;cursor:pointer;text-decoration:none;transition:all .2s;border:none;font-family:'DM Sans',sans-serif}
+.btn-primary{background:var(--amber);color:#0c0e10;font-weight:600}
+.btn-primary:hover{background:#d4921a;transform:translateY(-1px)}
+.btn-outline{background:transparent;color:var(--text2);border:1px solid var(--border2)}
+.btn-outline:hover{color:var(--text);border-color:rgba(255,255,255,.25);transform:translateY(-1px)}
+
+/* VIDEO CARD */
+.video-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
+.video-frame{background:#0a0d12;height:190px;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;cursor:pointer;overflow:hidden}
+.video-frame::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(232,160,48,.08) 0%,transparent 65%)}
+.video-grid-lines{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:32px 32px}
+.video-play{width:56px;height:56px;border-radius:50%;background:rgba(232,160,48,.15);border:1.5px solid rgba(232,160,48,.4);display:flex;align-items:center;justify-content:center;position:relative;z-index:1;transition:all .25s;margin-bottom:12px}
+.video-frame:hover .video-play{background:rgba(232,160,48,.25);border-color:var(--amber);transform:scale(1.07)}
+.video-play svg{margin-left:4px}
+.video-tag{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--text2);position:relative;z-index:1}
+.video-info{padding:16px 18px}
+.video-info-name{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:var(--text);margin-bottom:2px}
+.video-info-sub{font-size:12px;color:var(--text2)}
+
+/* STATS */
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin:52px 0 0}
+.stat{background:var(--bg2);padding:22px 20px;text-align:center}
+.stat-val{font-family:'Syne',sans-serif;font-size:32px;font-weight:800;line-height:1;color:var(--text);margin-bottom:5px}
+.stat-val .acc{color:var(--amber)}
+.stat-lbl{font-size:11.5px;color:var(--text3);line-height:1.4}
+
+/* SECTION TITLES */
+.section{padding:72px 0 0}
+.sec-eyebrow{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);margin-bottom:12px}
+.sec-title{font-family:'Syne',sans-serif;font-size:38px;font-weight:800;letter-spacing:-.02em;color:var(--text);margin-bottom:36px}
+
+/* SKILLS */
+.skills-tabs{display:flex;gap:4px;margin-bottom:28px;background:var(--bg3);padding:4px;border-radius:var(--radius-sm);width:fit-content;border:1px solid var(--border)}
+.skills-tab{padding:7px 18px;border-radius:5px;font-size:13px;font-weight:500;cursor:pointer;color:var(--text2);transition:all .2s;border:none;background:transparent;font-family:'DM Sans',sans-serif}
+.skills-tab.active{background:var(--amber);color:#0c0e10;font-weight:600}
+.skills-panel{display:none}
+.skills-panel.active{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.skill-item{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:14px 16px;display:flex;align-items:center;justify-content:space-between;transition:border-color .2s}
+.skill-item:hover{border-color:var(--border2)}
+.skill-name{font-size:13.5px;color:var(--text);font-weight:500}
+.skill-lvl{font-size:10.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:4px}
+.lvl-applied{background:rgba(74,143,232,.12);color:#7ab4f0}
+.lvl-practising{background:rgba(232,160,48,.12);color:var(--amber)}
+.lvl-learning{background:rgba(255,255,255,.05);color:var(--text3)}
+
+/* EXPERIENCE */
+.exp-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.exp-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:26px 24px;position:relative;overflow:hidden;transition:border-color .2s,transform .2s}
+.exp-card:hover{border-color:var(--border2);transform:translateY(-3px)}
+.exp-card.featured{border-color:rgba(232,160,48,.2)}
+.exp-card.featured::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--amber),transparent)}
+.exp-accent{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);margin-bottom:10px}
+.exp-role{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;color:var(--text);margin-bottom:3px}
+.exp-org{font-size:13px;color:var(--text2);margin-bottom:16px}
+.exp-bullets{list-style:none;display:flex;flex-direction:column;gap:7px}
+.exp-bullets li{font-size:13px;color:var(--text2);padding-left:14px;position:relative;line-height:1.6}
+.exp-bullets li::before{content:'—';position:absolute;left:0;color:var(--text3);font-size:11px;top:3px}
+.exp-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+.exp-tag{font-size:11.5px;padding:4px 10px;border-radius:4px;border:1px solid var(--border);color:var(--text3);background:rgba(255,255,255,.02)}
+.exp-period{position:absolute;top:24px;right:24px;font-size:11px;color:var(--text3)}
+
+/* CASE STUDIES */
+.cs-grid{display:grid;grid-template-columns:1fr;gap:20px}
+.cs-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px 28px;transition:border-color .2s,transform .2s;position:relative;overflow:hidden}
+.cs-card:hover{border-color:rgba(232,160,48,.25);transform:translateY(-3px)}
+.cs-card::after{content:'';position:absolute;right:0;top:0;bottom:0;width:3px;background:var(--amber);opacity:0;transition:opacity .2s}
+.cs-card:hover::after{opacity:1}
+.cs-label{display:flex;gap:8px;margin-bottom:14px}
+.cs-badge{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:4px}
+.cb-amber{background:var(--amber-glow);color:var(--amber);border:1px solid rgba(232,160,48,.2)}
+.cb-blue{background:var(--blue-glow);color:#7ab4f0;border:1px solid rgba(74,143,232,.2)}
+.cs-title{font-family:'Syne',sans-serif;font-size:20px;font-weight:700;color:var(--text);margin-bottom:4px}
+.cs-subtitle{font-size:13px;color:var(--amber);margin-bottom:14px}
+.cs-desc{font-size:14px;color:var(--text2);line-height:1.75;margin-bottom:18px}
+.cs-pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}
+.cs-pillar{background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px 14px}
+.cs-pillar-label{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:5px}
+.cs-pillar-val{font-size:13px;color:var(--text2);line-height:1.5}
+.cs-chips{display:flex;flex-wrap:wrap;gap:6px}
+.cs-chip{font-size:12px;padding:4px 11px;border-radius:4px;border:1px solid var(--border);color:var(--text3)}
+
+/* RESUME STRIP */
+.resume-strip{background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);padding:24px 28px;display:flex;align-items:center;justify-content:space-between;margin-top:16px}
+.rs-left{}
+.rs-title{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;color:var(--text);margin-bottom:3px}
+.rs-sub{font-size:13px;color:var(--text2)}
+.rs-actions{display:flex;gap:10px}
+
+/* ACHIEVEMENTS */
+.ach-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.ach-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:22px 20px;transition:border-color .2s,transform .2s}
+.ach-card:hover{transform:translateY(-3px);border-color:rgba(232,160,48,.2)}
+.ach-icon{font-size:24px;margin-bottom:12px}
+.ach-title{font-family:'Syne',sans-serif;font-size:14.5px;font-weight:700;color:var(--text);margin-bottom:6px}
+.ach-desc{font-size:12.5px;color:var(--text2);line-height:1.55}
+.ach-meta{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);margin-top:10px;background:var(--amber-glow);padding:3px 9px;border-radius:4px}
+
+/* EDUCATION */
+.edu-timeline{display:flex;flex-direction:column;gap:0}
+.edu-item{display:grid;grid-template-columns:120px 1fr;gap:28px;padding:28px 0;border-bottom:1px solid var(--border)}
+.edu-item:last-child{border-bottom:none}
+.edu-period{font-size:12px;font-weight:600;color:var(--amber);padding-top:3px}
+.edu-degree{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;color:var(--text);margin-bottom:3px}
+.edu-school{font-size:13.5px;color:var(--text2);margin-bottom:10px}
+.edu-score{display:inline-block;font-size:12px;font-weight:600;padding:4px 12px;border-radius:5px;background:rgba(232,160,48,.1);color:var(--amber);border:1px solid rgba(232,160,48,.15)}
+
+/* CONTACT */
+.contact-section{margin-top:72px;padding:64px 0;border-top:1px solid var(--border);text-align:center}
+.contact-title{font-family:'Syne',sans-serif;font-size:44px;font-weight:800;letter-spacing:-.025em;color:var(--text);line-height:1.1;margin-bottom:14px}
+.contact-title span{color:var(--amber)}
+.contact-sub{font-size:15px;color:var(--text2);margin-bottom:36px;max-width:500px;margin-left:auto;margin-right:auto}
+.contact-links{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:28px}
+.contact-link{display:flex;align-items:center;gap:8px;padding:11px 22px;border-radius:var(--radius-sm);border:1px solid var(--border2);font-size:14px;font-weight:500;color:var(--text2);text-decoration:none;transition:all .2s}
+.contact-link:hover{color:var(--text);border-color:rgba(255,255,255,.25);background:rgba(255,255,255,.04);transform:translateY(-2px)}
+.contact-email{font-size:14px;color:var(--text3)}
+.contact-email a{color:var(--amber);text-decoration:none}
+.contact-email a:hover{text-decoration:underline}
+
+/* FOOTER */
+.footer{border-top:1px solid var(--border);padding:22px 5vw;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--text3)}
+
+/* ANIMATIONS */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
+
+/* MOBILE */
+@media(max-width:700px){
+  .hero-grid{grid-template-columns:1fr;gap:40px}
+  .hero-name{font-size:52px}
+  .stats-row{grid-template-columns:repeat(2,1fr)}
+  .exp-grid,.ach-grid{grid-template-columns:1fr}
+  .cs-pillars{grid-template-columns:1fr}
+  .skills-panel.active{grid-template-columns:repeat(2,1fr)}
+  .edu-item{grid-template-columns:1fr;gap:6px}
+  .resume-strip{flex-direction:column;gap:16px;text-align:center}
+  .nav-links .nav-links a{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">RG<span>.</span></div>
+    <div class="nav-links">
+      <a href="#skills">Skills</a>
+      <a href="#leadership">Leadership</a>
+      <a href="#casestudies">Case Studies</a>
+      <a href="#education">Education</a>
+      <a href="#contact" class="nav-cta">Let's Connect</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="page">
+  <div class="hero">
+    <div class="hero-grid">
+      <div class="hero-left">
+        <div class="hero-badge"><span class="hero-badge-dot"></span>Open to AI PM · APM · Associate PM · Product Roles</div>
+        <div class="hero-name">
+          <span class="line1">Raghav</span>
+          <span class="line2">Gaur.</span>
+        </div>
+        <div class="hero-role"><strong>Aspiring AI Product Manager</strong> · B.Tech ECE @ ABES Engineering College · CBSE National TT Champion</div>
+        <p class="hero-summary">I think in user problems, not features. With a track record of leading teams, competing at the national level, and building AI-first products — I bring the strategic clarity, communication depth, and execution drive that great PM roles demand.</p>
+        <div class="hero-actions">
+          <a href="#casestudies" class="btn btn-primary">
+            <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            Case Studies
+          </a>
+          <a href="#contact" class="btn btn-outline">
+            <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            Let's Connect
+          </a>
+          <a href="#" class="btn btn-outline">
+            <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            View Resume
+          </a>
+        </div>
+      </div>
+
+      <!-- VIDEO CARD -->
+      <div>
+        <div class="video-card">
+          <div class="video-frame" onclick="alert('Replace this with your video URL — YouTube, Loom or Drive')">
+            <div class="video-grid-lines"></div>
+            <div class="video-play">
+              <svg width="20" height="20" fill="var(--amber)" viewBox="0 0 24 24"><path d="M8 5.14v14l11-7-11-7z"/></svg>
+            </div>
+            <div class="video-tag">Video Introduction</div>
+          </div>
+          <div class="video-info">
+            <div class="video-info-name">Meet Raghav — 90 seconds</div>
+            <div class="video-info-sub">Why I'm the PM you want on your team</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STATS -->
+    <div class="stats-row reveal">
+      <div class="stat">
+        <div class="stat-val">7.5<span class="acc">+</span></div>
+        <div class="stat-lbl">CGPA every sem</div>
+      </div>
+      <div class="stat">
+        <div class="stat-val"><span class="acc">#1</span></div>
+        <div class="stat-lbl">CBSE National TT</div>
+      </div>
+      <div class="stat">
+        <div class="stat-val">5<span class="acc">+</span></div>
+        <div class="stat-lbl">Leadership roles</div>
+      </div>
+      <div class="stat">
+        <div class="stat-val">300<span class="acc">+</span></div>
+        <div class="stat-lbl">Athletes mobilised</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SKILLS -->
+  <div class="section reveal" id="skills">
+    <div class="sec-eyebrow">Toolkit</div>
+    <div class="sec-title">Skills & Capabilities</div>
+    <div class="skills-tabs">
+      <button class="skills-tab active" data-tab="pm">PM Core</button>
+      <button class="skills-tab" data-tab="ai">AI & Product</button>
+      <button class="skills-tab" data-tab="comm">Communication</button>
+      <button class="skills-tab" data-tab="tools">Tools</button>
+    </div>
+    <div class="skills-panel active" data-panel="pm">
+      <div class="skill-item"><span class="skill-name">PRD Writing</span><span class="skill-lvl lvl-practising">Practising</span></div>
+      <div class="skill-item"><span class="skill-name">User Story Mapping</span><span class="skill-lvl lvl-practising">Practising</span></div>
+      <div class="skill-item"><span class="skill-name">MoSCoW Prioritisation</span><span class="skill-lvl lvl-applied">Applied</span></div>
+      <div class="skill-item"><span class="skill-name">RICE Framework</span><span class="skill-lvl lvl-learning">Learning</span></div>
+      <div class="skill-item"><span class="skill-name">OKR Setting</span><span class="skill-lvl lvl-learning">Learning</span></div>
+      <div class="skill-item"><span class="skill-name">Product Discovery</span><span class="skill-lvl lvl-applied">Applied</span></div>
+      <div class="skill-item"><span class="skill-name">Competitive Analysis</span><span class="skill-lvl lvl-applied">Applied</span></div>
+      <div class="skill-item"><span class="skill-name">Feature Roadmapping</span><span class="skill-lvl lvl-practising">Practising</span></div>
+    </div>
+    <div class="skills-panel" data-panel="ai">
+      <div class="skill-item"><span class="skill-name">AI Product Thinking</span><span class="skill-lvl lvl-practising">Practising</span></div>
+      <div class="skill-item"><span class="skill-name">LLM Use Cases</span><span class="skill-lvl lvl-applied">Applied</span></div>
+      <div class="skill-item"><span class="skill-name">Prompt Engineering</span><span class="skill-lvl lvl-applied">Applied</span></div>
+      <div class="skill-item"><span class="skill-name">AI Ethics Basics</span><span class="skill-lvl lvl-learning">Learning</span></div>
+      <div class="skill-item"><span class="skill-name">Vernacular AI</span><span class="skill-lvl lvl-applied">Applied</span></div>
+      <div class="skill-item"><span class="skill-name">India Internet Markets</span><span class="skill-lvl lvl-applied">Applied</span></div>
+    </div>
+    <div class="skills-panel" data-panel="comm">
+      <div class="skill-item"><span class="skill-name">Public Speaking</span><span class="skill-lvl lvl-applied">Applied</span></div>
+      <div class="skill-item"><span class="skill-name">Stakeholder Management</span><span class="skill-lvl lvl-applied">Applied</span></div>
+      <div class="skill-item"><span class="skill-name">Team Leadership</span><span class="skill-lvl lvl-applied">Applied</span></div>
+      <div class="skill-item"><span class="skill-name">Conflict Resolution</span><span class="skill-lvl lvl-applied">Applied</span></div>
+      <div class="skill-item"><span class="skill-name">Cross-functional Ops</span><span class="skill-lvl lvl-applied">Applied</span></div>
+      <div class="skill-item"><span class="skill-name">Event Management</span><span class="skill-lvl lvl-applied">Applied</span></div>
+    </div>
+    <div class="skills-panel" data-panel="tools">
+      <div class="skill-item"><span class="skill-name">Notion</span><span class="skill-lvl lvl-applied">Applied</span></div>
+      <div class="skill-item"><span class="skill-name">Figma (Basics)</span><span class="skill-lvl lvl-learning">Learning</span></div>
+      <div class="skill-item"><span class="skill-name">Miro</span><span class="skill-lvl lvl-applied">Applied</span></div>
+      <div class="skill-item"><span class="skill-name">Google Analytics</span><span class="skill-lvl lvl-learning">Learning</span></div>
+      <div class="skill-item"><span class="skill-name">MS Office Suite</span><span class="skill-lvl lvl-applied">Applied</span></div>
+      <div class="skill-item"><span class="skill-name">Canva</span><span class="skill-lvl lvl-applied">Applied</span></div>
+    </div>
+  </div>
+
+  <!-- LEADERSHIP -->
+  <div class="section reveal" id="leadership">
+    <div class="sec-eyebrow">Experience</div>
+    <div class="sec-title">Leadership Roles & Impact</div>
+    <div class="exp-grid">
+
+      <div class="exp-card featured">
+        <div class="exp-period">2023 – Present</div>
+        <div class="exp-accent">ABES Engineering College</div>
+        <div class="exp-role">Joint Secretary — Sports Club</div>
+        <div class="exp-org">College Sports Governance</div>
+        <ul class="exp-bullets">
+          <li>Identified root cause of low participation; restructured sports governance with per-sport captains & vice-captains</li>
+          <li>Scaled Zonals participation to 300+ players — highest in college history</li>
+          <li>Drove 100+ medals in a single year, a new institutional record</li>
+        </ul>
+        <div class="exp-tags">
+          <span class="exp-tag">300+ Athletes</span><span class="exp-tag">100+ Medals</span><span class="exp-tag">System Design</span>
+        </div>
+      </div>
+
+      <div class="exp-card featured">
+        <div class="exp-period">2024</div>
+        <div class="exp-accent">ABES Engineering College · AKTU's Biggest Fest</div>
+        <div class="exp-role">Core Coordinator — GENERO</div>
+        <div class="exp-org">Techno-Cultural Festival · ₹50L+ Budget</div>
+        <ul class="exp-bullets">
+          <li>Owned ₹2L+ budget for 2 events; zero overruns, delivered ahead of schedule</li>
+          <li>Led team of 20 volunteers across planning, execution & real-time problem-solving</li>
+          <li>Fest saw 5,000+ attendance, 55+ events, 20% YoY participation growth</li>
+        </ul>
+        <div class="exp-tags">
+          <span class="exp-tag">₹2L Budget</span><span class="exp-tag">20 Volunteers</span><span class="exp-tag">+20% YoY</span>
+        </div>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-period">2021 – 2022</div>
+        <div class="exp-accent">Rotary Club · JKG International School</div>
+        <div class="exp-role">ZIR — Zone Interact Representative</div>
+        <div class="exp-org">NCR-Level Representation</div>
+        <ul class="exp-bullets">
+          <li>Represented school across multiple NCR-level Rotary platforms</li>
+          <li>Built stakeholder communication and institutional representation skills early</li>
+        </ul>
+        <div class="exp-tags">
+          <span class="exp-tag">Public Speaking</span><span class="exp-tag">NCR Platforms</span>
+        </div>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-period">2021 – 2022</div>
+        <div class="exp-accent">JKG International School</div>
+        <div class="exp-role">Sports Captain — School Team</div>
+        <div class="exp-org">Inter-School Competitions</div>
+        <ul class="exp-bullets">
+          <li>Led school sports contingent across inter-school events in Ghaziabad & NCR</li>
+          <li>Managed team selection, morale, and on-ground strategy under pressure</li>
+        </ul>
+        <div class="exp-tags">
+          <span class="exp-tag">Team Leadership</span><span class="exp-tag">Strategy</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- RESUME -->
+  <div class="section reveal">
+    <div class="resume-strip">
+      <div class="rs-left">
+        <div class="rs-title">Resume</div>
+        <div class="rs-sub">One-page PM resume — projects, leadership, education and skills</div>
+      </div>
+      <div class="rs-actions">
+        <a href="#" class="btn btn-primary">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download PDF
+        </a>
+        <a href="#" class="btn btn-outline">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          View Online
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CASE STUDIES -->
+  <div class="section reveal" id="casestudies">
+    <div class="sec-eyebrow">Work</div>
+    <div class="sec-title">PM Case Studies</div>
+    <div class="cs-grid">
+      <div class="cs-card">
+        <div class="cs-label">
+          <span class="cs-badge cb-amber">PRD · Full Document</span>
+          <span class="cs-badge cb-blue">India Market</span>
+        </div>
+        <div class="cs-title">YouTube — Discover Local</div>
+        <div class="cs-subtitle">Fixing Vernacular Content Discovery in India</div>
+        <p class="cs-desc">India has 600M+ internet users, yet local-language creators remain buried under English-first recommendation algorithms. This PRD diagnoses the discovery gap for vernacular content and proposes a geo + language-aware recommendation layer within YouTube's existing architecture — unlocking creator growth for 500M+ Hindi, Tamil, Telugu and Bengali users.</p>
+        <div class="cs-pillars">
+          <div class="cs-pillar">
+            <div class="cs-pillar-label">Problem</div>
+            <div class="cs-pillar-val">Regional content undersurfaces due to language-biased ranking signals</div>
+          </div>
+          <div class="cs-pillar">
+            <div class="cs-pillar-label">Solution</div>
+            <div class="cs-pillar-val">Culturally-contextual content layer + vernacular creator onboarding tools</div>
+          </div>
+          <div class="cs-pillar">
+            <div class="cs-pillar-label">Impact</div>
+            <div class="cs-pillar-val">Addressable market of 500M+ underserved language users in India</div>
+          </div>
+        </div>
+        <div class="cs-chips">
+          <span class="cs-chip">User Research</span>
+          <span class="cs-chip">Market Sizing</span>
+          <span class="cs-chip">Feature Prioritisation</span>
+          <span class="cs-chip">PRD Writing</span>
+          <span class="cs-chip">MoSCoW</span>
+          <span class="cs-chip">Success Metrics</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ACHIEVEMENTS -->
+  <div class="section reveal" id="achievements">
+    <div class="sec-eyebrow">Recognition</div>
+    <div class="sec-title">Achievements</div>
+    <div class="ach-grid">
+      <div class="ach-card">
+        <div class="ach-icon">🏆</div>
+        <div class="ach-title">CBSE National TT Champion</div>
+        <div class="ach-desc">Won the CBSE National Table Tennis Championship — competing against top players across India in high-pressure, high-stakes conditions.</div>
+        <span class="ach-meta">2023 · National</span>
+      </div>
+      <div class="ach-card">
+        <div class="ach-icon">🏅</div>
+        <div class="ach-title">Sports Captain — JKG International</div>
+        <div class="ach-desc">Led school sports contingent across inter-school events. Managed selection, strategy, and team dynamics under pressure — a core PM skill.</div>
+        <span class="ach-meta">School · Leadership</span>
+      </div>
+      <div class="ach-card">
+        <div class="ach-icon">⭐</div>
+        <div class="ach-title">Mr. All Rounder</div>
+        <div class="ach-desc">Voted by peers and faculty at school farewell — recognising academic, sports, and leadership excellence combined.</div>
+        <span class="ach-meta">Peer Vote · 2022</span>
+      </div>
+      <div class="ach-card">
+        <div class="ach-icon">🎓</div>
+        <div class="ach-title">Mr. Fresher — ABES Engineering</div>
+        <div class="ach-desc">Won the college-wide Mr. Fresher title in first year — recognised for personality, communication, and natural leadership presence.</div>
+        <span class="ach-meta">College · 2022</span>
+      </div>
+      <div class="ach-card">
+        <div class="ach-icon">🎯</div>
+        <div class="ach-title">Utsaah TT Winner</div>
+        <div class="ach-desc">Won Table Tennis at ABES's annual sports fest while simultaneously organising it as Joint Secretary — leading and competing at once.</div>
+        <span class="ach-meta">ABES Fest</span>
+      </div>
+      <div class="ach-card">
+        <div class="ach-icon">🌐</div>
+        <div class="ach-title">ZIR — Rotary Club NCR</div>
+        <div class="ach-desc">Represented school at zone-level Rotary platforms across NCR — building communication and stakeholder skills at an early age.</div>
+        <span class="ach-meta">Leadership · NCR</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- EDUCATION -->
+  <div class="section reveal" id="education">
+    <div class="sec-eyebrow">Education</div>
+    <div class="sec-title">Academic Journey</div>
+    <div class="edu-timeline">
+      <div class="edu-item">
+        <div class="edu-period">2022 — Present</div>
+        <div>
+          <div class="edu-degree">B.Tech — Electronics & Communication Engineering</div>
+          <div class="edu-school">ABES Engineering College, Ghaziabad (AKTU)</div>
+          <span class="edu-score">CGPA 7.5+ · Consistent Every Semester</span>
+        </div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-period">Class XII · 2022</div>
+        <div>
+          <div class="edu-degree">Senior Secondary — CBSE</div>
+          <div class="edu-school">JKG International School, Indirapuram, Ghaziabad</div>
+          <span class="edu-score">80.4%</span>
+        </div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-period">Class X · 2020</div>
+        <div>
+          <div class="edu-degree">Secondary — CBSE</div>
+          <div class="edu-school">JKG International School, Indirapuram, Ghaziabad</div>
+          <span class="edu-score">94%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="contact-section reveal" id="contact">
+    <div class="contact-title">Let's build something<br><span>worth shipping.</span></div>
+    <p class="contact-sub">Open to AI PM internships, APM programs, and Associate PM roles at companies building meaningful AI products.</p>
+    <div class="contact-links">
+      <a href="mailto:raghavgaur@email.com" class="contact-link">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg>
+        Email Me
+      </a>
+      <a href="https://linkedin.com/in/raghavgaur" class="contact-link" target="_blank">
+        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+      <a href="https://github.com/raghavgaur" class="contact-link" target="_blank">
+        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        GitHub
+      </a>
+    </div>
+    <div class="contact-email">Or reach out directly at <a href="mailto:raghavgaur@email.com">raghavgaur@email.com</a></div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <span>© 2025 Raghav Gaur · AI Product Manager</span>
+  <span>ABES Engineering College · Ghaziabad</span>
+</footer>
+
+<script>
+// ── Smooth animated scroll for ALL anchor links ──────────────────────────
+function smoothScrollTo(targetId){
+  const target=document.getElementById(targetId);
+  if(!target)return;
+  const navH=document.querySelector('nav').offsetHeight;
+  const top=target.getBoundingClientRect().top+window.scrollY-navH-16;
+  // Easing function: easeInOutCubic
+  const start=window.scrollY;
+  const dist=top-start;
+  const duration=700;
+  let startTime=null;
+  function ease(t){return t<.5?4*t*t*t:(t-1)*(2*t-2)*(2*t-2)+1}
+  function step(now){
+    if(!startTime)startTime=now;
+    const elapsed=now-startTime;
+    const progress=Math.min(elapsed/duration,1);
+    window.scrollTo(0,start+dist*ease(progress));
+    if(progress<1)requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+
+document.querySelectorAll('a[href^="#"]').forEach(link=>{
+  link.addEventListener('click',e=>{
+    const href=link.getAttribute('href');
+    if(href==='#'||href==='#!')return;
+    const id=href.slice(1);
+    const target=document.getElementById(id);
+    if(!target)return;
+    e.preventDefault();
+    smoothScrollTo(id);
+  });
+});
+
+// ── Active nav link highlight as user scrolls ─────────────────────────────
+const sections=document.querySelectorAll('section[id], div[id]');
+const navLinks=document.querySelectorAll('.nav-links a[href^="#"]');
+const navObserver=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      const id=entry.target.id;
+      navLinks.forEach(a=>{
+        a.classList.remove('nav-active');
+        if(a.getAttribute('href')==='#'+id)a.classList.add('nav-active');
+      });
+    }
+  });
+},{rootMargin:'-40% 0px -50% 0px',threshold:0});
+document.querySelectorAll('[id]').forEach(el=>navObserver.observe(el));
+
+// ── Skills tabs ───────────────────────────────────────────────────────────
+document.querySelectorAll('.skills-tab').forEach(tab=>{
+  tab.addEventListener('click',()=>{
+    const t=tab.dataset.tab;
+    document.querySelectorAll('.skills-tab').forEach(x=>x.classList.remove('active'));
+    document.querySelectorAll('.skills-panel').forEach(x=>x.classList.remove('active'));
+    tab.classList.add('active');
+    document.querySelector('[data-panel="'+t+'"]').classList.add('active');
+  });
+});
+
+// ── Scroll reveal ─────────────────────────────────────────────────────────
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')});
+},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+document.querySelectorAll('.hero .reveal').forEach(el=>el.classList.add('in'));
+</script>
+</body>
+</html>
